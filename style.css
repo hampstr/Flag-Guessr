@@ -1,0 +1,43 @@
+
+body {
+    background-color: rgb(208, 201, 179);
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0px;
+    overflow: hidden;
+    user-select: none;
+}
+
+
+#guessContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 25vh;
+}
+
+button {
+    border-radius: 10px;
+    background-color: rgb(46, 148, 215);
+    cursor: pointer;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0px;
+}
+
+#guessContainer button {
+    margin: 10px;
+    width: 30%;
+    height: 8%;
+    font-size: 300%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    min-height: 8%;
+}
