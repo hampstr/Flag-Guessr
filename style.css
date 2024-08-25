@@ -50,7 +50,7 @@ button:active {
 
 #guessContainer button {
     margin: 10px;
-    width: 30%;
+    width: 35%;
     height: 8%;
     font-size: 300%;
     text-overflow: ellipsis;

@@ -4,7 +4,7 @@ const option1 = document.getElementById('option1');
 const option2 = document.getElementById('option2');
 const option3 = document.getElementById('option3');
 const option4 = document.getElementById('option4');
-
+const flagImg = document.getElementById('flagImg');
 let flagNames = {
     "AF": "Afghanistan",
     "AL": "Albania",
@@ -200,10 +200,36 @@ let flagNames = {
     "ZM": "Zambia",
     "ZW": "Zimbabwe"
 }
+let currentName = ""
+let currentAbbr = ""
+const abbrs = Object.keys(flagNames);
 
+window.addEventListener("load", newFlag)
 
-function newFlag() {
-
+function random(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function newFlag() {
+    // pick a new flag
+    currentName = flagNames[abbrs[Number(random(0, abbrs.length-1))]]
+    for (let abbr in flagNames) {
+        if (flagNames[abbr] === currentName) {
+            currentAbbr = abbr;
+            break;
+        }
+    }
+    // set the new picked flag
+    flagImg.src = `FLAGS/${currentAbbr.toLowerCase()}.png`
 
+    // set button options
+    
+    let correctButton = random(1, 4)
+
+    option1.textContent = correctButton == 1 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
+    option2.textContent = correctButton == 2 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
+    option3.textContent = correctButton == 3 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
+    option4.textContent = correctButton == 4 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
+
+
+}
