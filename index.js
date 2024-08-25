@@ -207,52 +207,52 @@ let currentName = ""
 let currentAbbr = ""
 const abbrs = Object.keys(flagNames);
 let flagNum = JSON.parse(JSON.stringify(abbrs.length))
-
+let revealing = false
 let seen = []
 
 window.addEventListener("load", newFlag)
 
 option1.addEventListener("click", () => {
-    if (currentName != "" && currentAbbr != "" && correctButton != 0) {
+    if (currentName != "" && currentAbbr != "" && correctButton != 0 && !revealing) {
         if (correctButton == 1) {
             score++
             newFlag()
         } 
         else {
-            newFlag()
+            revealCorrect()
         }
     }
 })
 option2.addEventListener("click", () => {
-    if (currentName != "" && currentAbbr != "" && correctButton != 0) {
+    if (currentName != "" && currentAbbr != "" && correctButton != 0 && !revealing) {
         if (correctButton == 2) {
             score++
             newFlag()
         } 
         else {
-            newFlag()
+            revealCorrect()
         }
     }
 })
 option3.addEventListener("click", () => {
-    if (currentName != "" && currentAbbr != "" && correctButton != 0) {
+    if (currentName != "" && currentAbbr != "" && correctButton != 0 && !revealing) {
         if (correctButton == 3) {
             score++
             newFlag()
         } 
         else {
-            newFlag()
+            revealCorrect()
         }
     }
 })
 option4.addEventListener("click", () => {
-    if (currentName != "" && currentAbbr != "" && correctButton != 0) {
+    if (currentName != "" && currentAbbr != "" && correctButton != 0 && !revealing) {
         if (correctButton == 4) {
             score++
             newFlag()
         } 
         else {
-            newFlag()
+            revealCorrect()
         }
     }
 })
@@ -277,22 +277,55 @@ function newFlag() {
     }
     // set the new picked flag
     flagImg.src = `FLAGS/${currentAbbr.toLowerCase()}.png`
-    
+
     
 
     // set button options
     
     correctButton = random(1, 4)
 
+
     option1.textContent = correctButton == 1 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
+    
     option2.textContent = correctButton == 2 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
+    
     option3.textContent = correctButton == 3 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
+
     option4.textContent = correctButton == 4 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
+    
     updateScoreText()
+    
     seen.push(currentAbbr)
+
 
 }
 
 function updateScoreText() {
     scoreText.textContent = `${score} / ${flagNum}`
+}
+
+function revealCorrect() {
+    let correct = 0
+    switch (correctButton) {
+        case 1:
+            correct = option1
+            break;
+        case 2:
+            correct = option2
+            break;
+        case 3:
+            correct = option3
+            break;
+        case 4:
+            correct = option4
+            break;
+    }
+    revealing = true
+    correct.classList.remove('reveal')
+    void correct.offsetWidth
+    correct.classList.add('reveal')
+    setTimeout(function () {
+        newFlag()
+        revealing = false
+    }, 1500);
 }

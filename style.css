@@ -96,3 +96,15 @@ h2 {
     padding: 0;
     font-size: 40px;
 }
+
+
+.reveal {
+    animation: correctAnimation 1.4s;
+}
+
+@keyframes correctAnimation {
+    to {
+        background-color: rgb(0, 179, 63);
+    }
+} 
+
