@@ -34,6 +34,7 @@ button {
 }
 
 
+
 button:hover {
     transition: 0.1s ease-in-out;
     transform: scale(1.1);
@@ -66,7 +67,7 @@ button:active {
     justify-content: center;
     margin-bottom: 10px;
     margin: 0px;
-    padding: 30px;
+    padding: 10px;
 }
 
 #flag img {
@@ -83,4 +84,15 @@ hr {
     border-width: 3px;
     border-radius: 10px;
     border-color: rgba(0, 0, 0, 0.074);
+}
+
+
+
+h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
 }

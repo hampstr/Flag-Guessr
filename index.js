@@ -5,6 +5,9 @@ const option2 = document.getElementById('option2');
 const option3 = document.getElementById('option3');
 const option4 = document.getElementById('option4');
 const flagImg = document.getElementById('flagImg');
+const scoreText = document.getElementById('score');
+let correctButton = 0
+let score = 0;
 let flagNames = {
     "AF": "Afghanistan",
     "AL": "Albania",
@@ -203,8 +206,57 @@ let flagNames = {
 let currentName = ""
 let currentAbbr = ""
 const abbrs = Object.keys(flagNames);
+let flagNum = JSON.parse(JSON.stringify(abbrs.length))
+
+let seen = []
 
 window.addEventListener("load", newFlag)
+
+option1.addEventListener("click", () => {
+    if (currentName != "" && currentAbbr != "" && correctButton != 0) {
+        if (correctButton == 1) {
+            score++
+            newFlag()
+        } 
+        else {
+            newFlag()
+        }
+    }
+})
+option2.addEventListener("click", () => {
+    if (currentName != "" && currentAbbr != "" && correctButton != 0) {
+        if (correctButton == 2) {
+            score++
+            newFlag()
+        } 
+        else {
+            newFlag()
+        }
+    }
+})
+option3.addEventListener("click", () => {
+    if (currentName != "" && currentAbbr != "" && correctButton != 0) {
+        if (correctButton == 3) {
+            score++
+            newFlag()
+        } 
+        else {
+            newFlag()
+        }
+    }
+})
+option4.addEventListener("click", () => {
+    if (currentName != "" && currentAbbr != "" && correctButton != 0) {
+        if (correctButton == 4) {
+            score++
+            newFlag()
+        } 
+        else {
+            newFlag()
+        }
+    }
+})
+
 
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -219,17 +271,28 @@ function newFlag() {
             break;
         }
     }
+    if (currentAbbr in seen) {
+        newFlag()
+        return
+    }
     // set the new picked flag
     flagImg.src = `FLAGS/${currentAbbr.toLowerCase()}.png`
+    
+    
 
     // set button options
     
-    let correctButton = random(1, 4)
+    correctButton = random(1, 4)
 
     option1.textContent = correctButton == 1 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
     option2.textContent = correctButton == 2 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
     option3.textContent = correctButton == 3 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
     option4.textContent = correctButton == 4 ? currentName : flagNames[abbrs[Number(random(0, abbrs.length-1))]]
+    updateScoreText()
+    seen.push(currentAbbr)
 
+}
 
+function updateScoreText() {
+    scoreText.textContent = `${score} / ${flagNum}`
 }
