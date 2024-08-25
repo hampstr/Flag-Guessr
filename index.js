@@ -209,6 +209,7 @@ const abbrs = Object.keys(flagNames);
 let flagNum = JSON.parse(JSON.stringify(abbrs.length))
 let revealing = false
 let seen = []
+let count = JSON.parse(JSON.stringify(abbrs.length))
 
 window.addEventListener("load", newFlag)
 
@@ -297,6 +298,16 @@ function newFlag() {
     
     seen.push(currentAbbr)
 
+    count--
+    if (count === 0) {
+        alert(`Game Over! Your final score is ${score} / ${flagNum}`)
+        score = 0
+        count = flagNum
+        seen = []
+        updateScoreText()
+        newFlag()
+    }
+    updateScoreText()
 
 }
 
