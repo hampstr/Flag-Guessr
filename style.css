@@ -16,8 +16,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    padding-top: 25vh;
+    /* height: 100vh; */
+    padding-top: 10px;
+    margin: 0px;
 }
 
 button {
@@ -28,8 +29,24 @@ button {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    margin: 0px;
+    border-width: 5px;
+    border-style: solid;
 }
+
+
+button:hover {
+    transition: 0.1s ease-in-out;
+    transform: scale(1.1);
+    background-color: rgb(37, 115, 167);
+}
+
+button:active {
+    transition: 0.1s ease-in-out;
+    transform: scale(1.05);
+    background-color: rgb(69, 146, 197);
+
+}
+
 
 #guessContainer button {
     margin: 10px;
@@ -40,4 +57,30 @@ button {
     white-space: nowrap;
     overflow: hidden;
     min-height: 8%;
+}
+
+
+#flag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin: 0px;
+    padding: 30px;
+}
+
+#flag img {
+    border-width: 5px;
+    border-style: solid;
+    user-select: none;
+    border-radius: 25px;
+
+}
+
+hr {
+    width: 50%;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 10px;
+    border-color: rgba(0, 0, 0, 0.074);
 }
