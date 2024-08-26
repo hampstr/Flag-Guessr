@@ -304,39 +304,22 @@ function newFlag() {
     updateScoreText()
 }
 
-
 function updateButtonChoices() {
+    let available = abbrs.slice(); // Copy the array of abbreviations
+    available.splice(available.indexOf(currentAbbr), 1); // Remove the correct option from available choices
 
-    let available = abbrs.slice()
     let buttons = [option1, option2, option3, option4];
 
-    switch (correctButton) {
-        case 1:
-            option1.textContent = currentName
-            break
-        
-        case 2:
-            option2.textContent = currentName
-            break
-        
-        case 3:
-            option3.textContent = currentName
-            break
-        
-        case 4:
-            option4.textContent = currentName
-            break
-    }
-    buttons.splice(correctButton - 1, 1)
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].textContent = flagNames[available[random(0, available.length - 1)]];
-        available.splice(available.indexOf(buttons[i].textContent), 1);
-    }
+    // Assign the correct name to the correct button
+    buttons[correctButton - 1].textContent = currentName;
 
-    // option1.textContent = correctButton == 1 ? currentName : flagNames[abbrs[Number(random(0, available.length-1))]]
-    // option2.textContent = correctButton == 2 ? currentName : flagNames[abbrs[Number(random(0, available.length-1))]]
-    // option3.textContent = correctButton == 3 ? currentName : flagNames[abbrs[Number(random(0, available.length-1))]]
-    // option4.textContent = correctButton == 4 ? currentName : flagNames[abbrs[Number(random(0, available.length-1))]]
+    // Assign random names to the other buttons
+    buttons.splice(correctButton - 1, 1);
+    for (let i = 0; i < buttons.length; i++) {
+        let randomIndex = random(0, available.length - 1);
+        buttons[i].textContent = flagNames[available[randomIndex]];
+        available.splice(randomIndex, 1); // Remove the used name from the list to avoid duplicates
+    }
 }
 
 
